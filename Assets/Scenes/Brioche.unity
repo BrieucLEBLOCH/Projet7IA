@@ -552,6 +552,7 @@ MonoBehaviour:
   acceleration: 50
   deacceleration: 100
   currentSpeed: 0
+  movement: {fileID: 753646913899126624, guid: 9641a42ccf97d5d4eabae40576975d8f, type: 3}
 --- !u!1 &1337912845
 GameObject:
   m_ObjectHideFlags: 0

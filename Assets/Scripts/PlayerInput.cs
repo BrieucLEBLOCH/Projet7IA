@@ -13,6 +13,9 @@ public class PlayerInput : MonoBehaviour
     public Vector2 movementInput { get; set; }
     private Vector2 oldMovementInput;
 
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,5 +41,22 @@ public class PlayerInput : MonoBehaviour
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         rb2d.velocity = oldMovementInput * currentSpeed;
+
+        Flip(rb2d.velocity.x);
+
+        float characterVelocity = rb2d.velocity.magnitude;
+        animator.SetFloat("Speed", characterVelocity);
+    }
+
+    private void Flip(float velocity)
+    {
+        if (velocity > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (velocity < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
