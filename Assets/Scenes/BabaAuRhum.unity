@@ -4440,12 +4440,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 7
-  acceleration: 50
-  deacceleration: 100
   currentSpeed: 0
+  acceleration: 10
+  deacceleration: 10
+  maxHP: 10
+  HP: 10
+  level: 1
+  XP: 0
   movement: {fileID: 753646913899126624, guid: 9641a42ccf97d5d4eabae40576975d8f, type: 3}
-  animator: {fileID: 366785099}
-  spriteRenderer: {fileID: 366785097}
+  HPB: {fileID: 0}
+  XPB: {fileID: 0}
 --- !u!114 &366785096
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MoveMonster : MonoBehaviour
 {
-    public Transform player;
-    public float moveSpeedMonster = 5f;
+    private Player player;
+    [SerializeField] private float moveSpeedMonster = 5f;
     private Rigidbody2D rb2d;
 
 
-    private void Start()
+    private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.Find("/Player").GetComponent<Player>();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -24,17 +24,8 @@ public class MoveMonster : MonoBehaviour
     {
         if (player != null)
         {
-            Vector2 direction = (player.position - transform.position).normalized;
+            Vector2 direction = (player.transform.position - transform.position).normalized;
             rb2d.MovePosition(rb2d.position + direction * moveSpeedMonster * Time.fixedDeltaTime);
         }
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
-    }
-
 }

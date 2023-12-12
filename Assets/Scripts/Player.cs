@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2d;
     [SerializeField]
     private float maxSpeed = 5, currentSpeed = 0, acceleration = 50, deacceleration = 100, maxHP = 10, HP = 10, level = 1, XP = 0;
+    private bool flipped = false;
     private float XPtolvlup = 10;
     [SerializeField]
     private InputActionReference movement;
@@ -16,10 +17,15 @@ public class Player : MonoBehaviour
     public Vector2 movementInput { get; set; }
     private Vector2 oldMovementInput;
 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,10 +59,33 @@ public class Player : MonoBehaviour
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         rb2d.velocity = oldMovementInput * currentSpeed;
+
+        Flip(rb2d.velocity.x);
+
+        animator.SetFloat("Speed", currentSpeed);
+    }
+
+    private void Flip(float velocity)
+    {
+        if (velocity > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+            flipped = false;
+        }
+        else if (velocity < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+            flipped = true;
+        }
     }
 
     public void AddXP()
     {
         XP += 1;
+    }
+
+    public bool GetFlipped()
+    {
+        return flipped;
     }
 }
