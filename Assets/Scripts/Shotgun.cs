@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Shotgun : MonoBehaviour
 {
-    [SerializeField]
-    private int dmg = 2;
+    [SerializeField] private int dmg = 2;
     private Player player;
+    [SerializeField] GameObject bullet;
+    float pelletSpeed = 150;
+    int pelletCount = 5;
+    float spreadFactor = 0.01f;
+    float fireRate = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +28,25 @@ public class Shotgun : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Rigidbody pellet;
+            for (int i = 0; i < pelletCount; i++)
+            {
+                Quaternion pelletRot = transform.rotation;
+                pelletRot.x += Random.Range(-spreadFactor, spreadFactor);
+                pelletRot.y += Random.Range(-spreadFactor, spreadFactor);
+                pellet = Instantiate(bullet.GetComponent<Rigidbody>(), transform.position, pelletRot);
+                pellet.velocity = transform.forward * pelletSpeed;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "EnemyTag")
         {
-            collision.gameObject.GetComponent<Dummy>().TakeDamages(dmg);
             Debug.Log("bite");
         }
     }

@@ -17,7 +17,7 @@ public class XP : MonoBehaviour
     {
         if (isFollowing)
         {
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, player.transform.position, 5 * Time.deltaTime);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, player.transform.position, 7 * Time.deltaTime);
         }
     }
 

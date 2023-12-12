@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    [SerializeField]
-    private float maxHP = 10;
+    [SerializeField] private float maxHP = 10;
+    [SerializeField] private int dmg = 1;
+    [SerializeField] private GameObject XP;
     private float HP = 1;
     private IEnumerator coroutine;
     Color color;
+    Player player;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,7 +23,7 @@ public class Dummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TakeDamages(int i)
@@ -29,6 +31,7 @@ public class Dummy : MonoBehaviour
         HP -= i;
         if (HP <= 0)
         {
+            Instantiate(XP, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
@@ -39,5 +42,14 @@ public class Dummy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         gameObject.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerTag")
+        {
+            player = collision.gameObject.GetComponentInParent<Player>();
+            player.TakeDamage(dmg);
+        }
     }
 }

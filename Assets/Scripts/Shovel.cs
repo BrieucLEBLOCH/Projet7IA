@@ -22,7 +22,7 @@ public class Shovel : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyTag")
         {
-            collision.gameObject.GetComponent<Dummy>().TakeDamages(dmg);
+            collision.gameObject.GetComponent<Enemy>().TakeDamages(dmg);
         }
     }
 }

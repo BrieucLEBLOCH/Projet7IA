@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2d;
     [SerializeField]
     private float maxSpeed = 5, currentSpeed = 0, acceleration = 50, deacceleration = 100, maxHP = 10, HP = 10, level = 1, XP = 0;
-    private bool flipped = false;
+    private bool flipped = false, canTakeDmg = true;
     private float XPtolvlup = 10;
     [SerializeField]
     private InputActionReference movement;
@@ -82,6 +83,22 @@ public class Player : MonoBehaviour
     public void AddXP()
     {
         XP += 1;
+    }
+
+    public void TakeDamage(int i)
+    {
+        if (canTakeDmg)
+        {
+            HP -= i;
+            canTakeDmg = false;
+            StartCoroutine(IFrame(0.5f));
+        }
+
+    }
+    private IEnumerator IFrame(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        canTakeDmg = true;
     }
 
     public bool GetFlipped()
