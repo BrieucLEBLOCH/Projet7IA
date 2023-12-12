@@ -33,7 +33,7 @@ public class MoveMonster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Le monstre a touché le joueur !");
+
         }
     }
 
