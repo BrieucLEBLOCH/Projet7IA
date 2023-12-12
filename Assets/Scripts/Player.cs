@@ -26,9 +26,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         XPtolvlup = 10 * level;
-        if (XP == XPtolvlup)
+        if (XP >= XPtolvlup)
         {
-            XP = 0;
+            XP -= XPtolvlup;
             level += 1;
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -53,5 +53,10 @@ public class Player : MonoBehaviour
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         rb2d.velocity = oldMovementInput * currentSpeed;
+    }
+
+    public void AddXP()
+    {
+        XP += 1;
     }
 }
