@@ -4,34 +4,43 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    private MonsterMover monsterMover;
-    public float attackCooldown = 2f;
-    private float lastAttackTime;
-    public float chaseRange = 10f;
+    [SerializeField] private ChaseState chaseState;
 
-    public void Initialize(MonsterMover mover)
+    [SerializeField] private float attackRange;
+    [SerializeField] private float attackInterval;
+    
+    private float lastAttackTime;
+
+    private MoveMonster moveMonster;
+
+    public void Initialize(MoveMonster mover, ChaseState chase)
     {
-        monsterMover = mover;
+        moveMonster = mover;
+        chaseState = chase;
     }
 
     public override State RunCurrentState()
     {
-        if (Time.time - lastAttackTime > attackCooldown)
-        {
-            Debug.Log("J'ai attaqué !");
-            lastAttackTime = Time.time;
-        }
+        float distanceToPlayer = Vector3.Distance(moveMonster.transform.position, moveMonster.player.position);
 
-        if (monsterMover == null || monsterMover.player == null)
+        if (distanceToPlayer <= attackRange)
         {
+            if (Time.time - lastAttackTime > attackInterval)
+            {
+                AttackPlayer();
+                lastAttackTime = Time.time;
+            }
+            
             return this;
         }
-
-        if (Vector3.Distance(transform.position, monsterMover.player.position) > chaseRange)
+        else
         {
-            return monsterMover.GetComponent<ChaseState>();
+            return chaseState;
         }
+    }
 
-        return this;
+    private void AttackPlayer()
+    {
+        Debug.Log("J'attaque !");
     }
 }

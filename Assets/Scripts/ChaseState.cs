@@ -4,34 +4,37 @@ using UnityEngine;
 
 public class ChaseState : State
 {
-    private MonsterMover monsterMover;
-    public AttackState attackState;
-    public IdleState idleState;
-    public float attackRange = 1f;
-    public float loseInterestRange = 15f;
+    [SerializeField] private AttackState attackState;
+    [SerializeField] private IdleState idleState;
 
-    public void Initialize(MonsterMover mover)
+    [SerializeField] private float detectionRange;
+    [SerializeField] private float attackRange;
+
+    private MoveMonster moveMonster;
+
+    public void Initialize(MoveMonster mover, AttackState attack, IdleState idle)
     {
-        monsterMover = mover;
-        
-        if (attackState != null)
-        {
-            attackState.Initialize(mover);
-        }
+        moveMonster = mover;
+        attackState = attack;
+        idleState = idle;
     }
 
     public override State RunCurrentState()
     {
-        if (monsterMover == null || monsterMover.player == null)
-        {
-            return this;
-        }
+        float distanceToPlayer = Vector3.Distance(moveMonster.transform.position, moveMonster.player.position);
 
-        if (Vector2.Distance(transform.position, monsterMover.player.position) <= attackRange)
+        if (distanceToPlayer <= attackRange)
         {
             return attackState;
         }
-
-        return this;
+        else if (distanceToPlayer <= detectionRange)
+        {
+            moveMonster.MoveTowardsThePlayer();
+            return this;
+        }
+        else
+        {
+            return idleState;
+        }
     }
 }

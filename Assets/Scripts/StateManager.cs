@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    public State currentState;
-    private MonsterMover monsterMover;
-    public ChaseState chaseState;
-    public AttackState attackState;
+    [SerializeField] private State currentState;
+    [SerializeField] private IdleState idleState;
+    [SerializeField] private ChaseState chaseState;
+    [SerializeField] private AttackState attackState;
 
-    void Start()
+    private MoveMonster moveMonster;
+
+    private void Start()
     {
-        monsterMover = GetComponent<MonsterMover>();
+        moveMonster = GetComponent<MoveMonster>();
 
-        if (chaseState != null)
+        if (idleState != null && chaseState != null && attackState != null)
         {
-            chaseState.Initialize(monsterMover);
+            idleState.Initialize(moveMonster, chaseState);
+            chaseState.Initialize(moveMonster, attackState, idleState);
+            attackState.Initialize(moveMonster, chaseState);
         }
 
-        if (attackState != null)
-        {
-            attackState.Initialize(monsterMover);
-        }
-
-        currentState = chaseState;
+        currentState = idleState;
     }
 
-    void Update()
+    private void Update()
     {
         RunStateMachine();
     }
