@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 1158026107}
   - component: {fileID: 1158026106}
   - component: {fileID: 1158026113}
-  - component: {fileID: 1158026108}
+  - component: {fileID: 1158026114}
   - component: {fileID: 1158026111}
   - component: {fileID: 1158026112}
   m_Layer: 3
@@ -817,22 +817,6 @@ Transform:
   - {fileID: 533084242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1158026108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158026100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69101a35a643200438737eb1af633139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: {fileID: 0}
-  idleState: {fileID: 1390212972}
-  chaseState: {fileID: 1145504746}
-  attackState: {fileID: 57831491}
 --- !u!50 &1158026111
 Rigidbody2D:
   serializedVersion: 4
@@ -920,6 +904,22 @@ MonoBehaviour:
   player: {fileID: 0}
   isIdle: 0
   speed: 2
+--- !u!114 &1158026114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158026100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69101a35a643200438737eb1af633139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+  idleState: {fileID: 1390212972}
+  chaseState: {fileID: 1145504746}
+  attackState: {fileID: 57831491}
 --- !u!1 &1337912845
 GameObject:
   m_ObjectHideFlags: 0
