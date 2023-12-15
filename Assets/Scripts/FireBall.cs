@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
+    //test
     [SerializeField] private int dmg = 1;
     [SerializeField] private float distance;
 
