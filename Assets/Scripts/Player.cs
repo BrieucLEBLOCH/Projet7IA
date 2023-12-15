@@ -21,12 +21,15 @@ public class Player : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] Canvas canvas;
+
     // Start is called before the first frame update
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        canvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,6 +40,8 @@ public class Player : MonoBehaviour
         {
             XP -= XPtolvlup;
             level += 1;
+            canvas.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {

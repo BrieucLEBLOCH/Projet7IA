@@ -1,35 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-    public GameObject PrefabFireBall;
-    public Transform player;
-    public Transform firePoint;
-    public float fireBallSpeed = 3f;
-    public float fireRate = 1f;
-    private float nextFireTime = 0f; 
+    [SerializeField] private int dmg = 1;
+    [SerializeField] private float distance;
 
-    private void Start()
+    private void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    void Update()
-    {
-        if (Time.time >= nextFireTime)
+        distance = Vector3.Distance(GameObject.Find("/Player").transform.position, gameObject.transform.position);
+        if (distance > 30)
         {
-            ShootFireBall();
-            nextFireTime = Time.time + 1f / fireRate;
+            Destroy(gameObject);
         }
     }
-
-    void ShootFireBall()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject newFireBall = Instantiate(PrefabFireBall, firePoint.position, firePoint.rotation);
-        Vector2 fireBallDirection = (player.position - firePoint.position).normalized;
-        newFireBall.GetComponent<Rigidbody2D>().velocity = fireBallDirection * fireBallSpeed;
+        if (collision.gameObject.tag == "PlayerTag")
+        {
+            Destroy(gameObject);
+            collision.gameObject.GetComponentInParent<Player>().TakeDamage(dmg);
+        }
     }
 }

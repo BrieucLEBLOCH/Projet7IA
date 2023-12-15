@@ -31,12 +31,12 @@ public class Shotgun : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Rigidbody pellet;
+            Rigidbody2D pellet;
             for (int i = 0; i < pelletCount; i++)
             {
-                pellet = Instantiate(bullet.GetComponent<Rigidbody>(), gameObject.transform.position, gameObject.transform.rotation);
+                pellet = Instantiate(bullet.GetComponent<Rigidbody2D>(), gameObject.transform.position, gameObject.transform.rotation);
                 pellet.transform.Rotate(0, 0, Random.Range(-100, 100));
-                pellet.velocity = pellet.transform.up * pelletSpeed * Time.deltaTime;
+                pellet.velocity = pellet.transform.up * pelletSpeed;
             }
         }
     }

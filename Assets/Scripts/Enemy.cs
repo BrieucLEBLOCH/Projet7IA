@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     private float HP = 1;
     private IEnumerator coroutine;
     Color color;
-    Player player;
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,8 +47,15 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerTag")
         {
-            player = collision.gameObject.GetComponentInParent<Player>();
-            player.TakeDamage(dmg);
+            collision.gameObject.GetComponentInParent<Player>().TakeDamage(dmg);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerTag")
+        {
+            collision.gameObject.GetComponentInParent<Player>().TakeDamage(dmg);
         }
     }
 }
