@@ -6,7 +6,6 @@ public class AttackState : State
 {
     [SerializeField] private ChaseState chaseState;
 
-    [SerializeField] private float detectionRange;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackInterval;
     

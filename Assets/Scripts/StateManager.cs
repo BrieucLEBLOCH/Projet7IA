@@ -5,7 +5,6 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     [SerializeField] private State currentState;
-    [SerializeField] private IdleState idleState;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private AttackState attackState;
 
@@ -15,14 +14,13 @@ public class StateManager : MonoBehaviour
     {
         moveMonster = GetComponent<MoveMonster>();
 
-        if (idleState != null && chaseState != null && attackState != null)
+        if (chaseState != null && attackState != null)
         {
-            idleState.Initialize(moveMonster, chaseState);
-            chaseState.Initialize(moveMonster, attackState, idleState);
+            chaseState.Initialize(moveMonster, attackState);
             attackState.Initialize(moveMonster, chaseState);
         }
 
-        currentState = idleState;
+        currentState = chaseState;
     }
 
     private void Update()

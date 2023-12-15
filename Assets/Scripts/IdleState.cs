@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+
 public class IdleState : State
 {
     [SerializeField] private ChaseState chaseState;
@@ -42,3 +44,5 @@ public class IdleState : State
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
+
+*/

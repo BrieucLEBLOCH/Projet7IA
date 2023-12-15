@@ -5,18 +5,15 @@ using UnityEngine;
 public class ChaseState : State
 {
     [SerializeField] private AttackState attackState;
-    [SerializeField] private IdleState idleState;
 
-    [SerializeField] private float detectionRange;
     [SerializeField] private float attackRange;
 
     private MoveMonster moveMonster;
 
-    public void Initialize(MoveMonster mover, AttackState attack, IdleState idle)
+    public void Initialize(MoveMonster mover, AttackState attack)
     {
         moveMonster = mover;
         attackState = attack;
-        idleState = idle;
     }
 
     public override State RunCurrentState()
@@ -27,14 +24,10 @@ public class ChaseState : State
         {
             return attackState;
         }
-        else if (distanceToPlayer <= detectionRange)
+        else
         {
             moveMonster.MoveTowardsThePlayer();
             return this;
-        }
-        else
-        {
-            return idleState;
         }
     }
 }
