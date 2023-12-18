@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -50,6 +51,11 @@ public class Player : MonoBehaviour
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
         movementInput = movement.action.ReadValue<Vector2>();
+
+        if (HP <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void FixedUpdate()
