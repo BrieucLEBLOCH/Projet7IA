@@ -123,10 +123,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8926190752298782968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0703e76bb5c4f24a87c8b5de29692ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b20dd816113dc4849b693468b381e54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 10
+  dmg: 1
 --- !u!58 &-4302770518279934326
 CircleCollider2D:
   m_ObjectHideFlags: 0
