@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame(string scenename)
+    public void SceneLoad(string scenename)
     {
         SceneManager.LoadScene(scenename);
         Time.timeScale = 1.0f;
