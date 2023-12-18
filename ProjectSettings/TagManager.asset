@@ -7,6 +7,9 @@ TagManager:
   - XPTag
   - PlayerTag
   - GrabTag
+  - EnemyTag
+  - Monster
+  - BossSpawners
   layers:
   - Default
   - TransparentFX

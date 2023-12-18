@@ -7,22 +7,26 @@ public class InRange : ActionNode
 {
     private Player player;
     private Rigidbody2D rb2d;
-    Vector2 range;
-    protected override void OnStart() {
+    float distance;
+    float range;
+    protected override void OnStart()
+    {
         player = GameObject.Find("/Player").GetComponent<Player>();
         rb2d = context.gameObject.GetComponent<Rigidbody2D>();
-        range = new Vector2(50, 50);
-
+        range = 50;
     }
 
-    protected override void OnStop() {
+    protected override void OnStop()
+    {
     }
 
-    protected override State OnUpdate() {
-        /*if ((player.transform.position - rb2d.position) == range)
+    protected override State OnUpdate()
+    {
+        distance = Vector3.Distance(player.transform.position, context.transform.position);
+        if (distance <= range)
         {
             return State.Success;
-        }*/
+        }
         return State.Failure;
     }
 }
