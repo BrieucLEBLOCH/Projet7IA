@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-
 public class RallyState : State
 {
     [SerializeField] private ChaseState chaseState;
 
-    [SerializeField] private float stateChangeCooldown;
     [SerializeField] private float rallyRadius;
-    [SerializeField] private int minMonstersForAttack;
 
     private MoveMonster moveMonster;
 
@@ -22,29 +18,23 @@ public class RallyState : State
 
     public override State RunCurrentState()
     {
-        if (moveMonster.IsEnoughMonstersNearby(rallyRadius, 3) && Time.time > moveMonster.lastStateChangeTime + stateChangeCooldown)
+        if (MoveMonster.CountAllMonsters() < 2)
         {
-            moveMonster.lastStateChangeTime = Time.time;
             return chaseState;
         }
-        else
+
+        if (moveMonster.IsEnoughMonstersNearby(rallyRadius, 2, 4))
         {
-            Transform nearestMonster = moveMonster.FindNearestMonsterGlobal();
-            
-            if (nearestMonster != null)
-            {
-                moveMonster.MoveTowardsTarget(nearestMonster);
-            }
-
-            return this;
+            return chaseState;
         }
-    }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, rallyRadius);
+        Transform nearestMonster = moveMonster.FindNearestMonsterGlobal();
+        
+        if (nearestMonster != null)
+        {
+            moveMonster.MoveTowardsTarget(nearestMonster);
+        }
+
+        return this;
     }
 }
-
-*/
