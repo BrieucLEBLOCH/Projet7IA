@@ -7,6 +7,7 @@ TagManager:
   - XPTag
   - PlayerTag
   - GrabTag
+  - EnemyTag
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Ground
   - FireBall
   - Player
-  - 
+  - Tree
   - 
   - 
   - 

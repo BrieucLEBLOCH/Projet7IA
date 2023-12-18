@@ -93,7 +93,6 @@ public class Spawner : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         GameObject enemies = Instantiate(treeSpawner1, gameObject.transform.position, gameObject.transform.rotation);
-        Debug.Log(gameObject.transform.position);
         enemies.transform.SetParent(treesTransform);
         foreach (Transform enemy in enemies.GetComponentsInChildren<Transform>())
         {
