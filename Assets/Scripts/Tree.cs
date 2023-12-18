@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Tree : MonoBehaviour
 {
     [SerializeField] private GameObject PrefabFireBall;
+    private GameObject treeEnemies;
     private GameObject player;
     private bool canShoot = true, atRange = false;
     [SerializeField] private float fireBallSpeed = 5;
@@ -16,14 +17,30 @@ public class Tree : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("/Player");
+        treeEnemies = GameObject.Find("/Enemies/Trees");
+
+        foreach (Transform t in treeEnemies.GetComponentsInChildren<Transform>())
+        {
+            if (t != treeEnemies && t != gameObject.transform)
+            {
+                if (Vector3.Distance(t.position, gameObject.transform.position) < 3)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
     }
 
     void Update()
     {
         distance = Vector3.Distance(GameObject.Find("/Player").transform.position, gameObject.transform.position);
-        if (distance > 15)
+        if (distance > 25 && distance < 50)
         {
             atRange = false;
+        }
+        else if (distance >= 50)
+        {
+            Destroy(gameObject);
         }
         else
         {

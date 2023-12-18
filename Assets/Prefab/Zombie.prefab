@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7080666591515790010}
   - component: {fileID: 7621182086527882006}
   - component: {fileID: 632716322981430300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie
   m_TagString: EnemyTag
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0945354e4cede3d4cb414b7614426e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedMonster: 3
+  moveSpeedMonster: 2
 --- !u!114 &2186001361293156175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972532c0d95dd46478f748d8d045e105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  dmg: 10
+  maxHP: 5
+  dmg: 1
   XP: {fileID: 2486790568786027743, guid: 350d1ffe56018aa468bfe657e181e03c, type: 3}
 --- !u!50 &7080666591515790010
 Rigidbody2D:
