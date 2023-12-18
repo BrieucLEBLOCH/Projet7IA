@@ -14,7 +14,6 @@ public class Pause : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Pause");
             Time.timeScale = 0.0f;
             pauseTxt.SetActive(true);
             ShovelRotateOFF.GetComponent<ShovelRotate>().enabled = false;
@@ -24,7 +23,6 @@ public class Pause : MonoBehaviour
 
     public void Continue()
     {
-        Debug.Log("Unpause");
         Time.timeScale = 1.0f;
         pauseTxt.SetActive(false);
         ShovelRotateOFF.GetComponent<ShovelRotate>().enabled = true;

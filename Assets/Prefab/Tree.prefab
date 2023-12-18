@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6107905533353632209}
   - component: {fileID: 4642349106308066264}
   - component: {fileID: 3783429045943763105}
-  - component: {fileID: 2582101774813829005}
+  - component: {fileID: 1160627758802722913}
   - component: {fileID: 8196536751796969795}
   m_Layer: 3
   m_Name: Tree
@@ -160,7 +160,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2582101774813829005
+--- !u!114 &1160627758802722913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3749806510120023396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20dd816113dc4849b693468b381e54a, type: 3}
+  m_Script: {fileID: 11500000, guid: 08f26be83e0a25a40bb281e2fe9258b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabFireBall: {fileID: 8926190752298782968, guid: d990afca7e4bf3842aafacb6291edbf7, type: 3}
