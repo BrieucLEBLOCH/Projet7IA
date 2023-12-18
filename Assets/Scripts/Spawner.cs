@@ -20,9 +20,9 @@ public class Spawner : MonoBehaviour
             GameObject enemies = Instantiate(ZombieSpawner1, gameObject.transform.position, gameObject.transform.rotation);
             enemies.transform.SetParent(EnemiesObject.transform);
         }
-        foreach (Transform enemy in enemies.transform)
-        {
-            enemy.parent = null;
-        }
+        //foreach (Transform enemy in enemies.transform)
+        //{
+        //    enemy.parent = null;
+        //}
     }
 }
