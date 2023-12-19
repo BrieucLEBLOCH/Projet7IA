@@ -22,7 +22,7 @@ Tire une boule de feu, attends 2 secondes, pour verifier s'il peut de nouveau ti
 Running : 
 S'éloigne du joueur tant que la distance les séparant est trop petit, apres cela, il revient au state idle
 
-Pour un schéma, voir l'image "Schéma StateManagement1"
+Pour un schéma, voir l'image "Schéma StateManagementFireball"
 
 ZombieRugby (voir dossier State Management Maxence Rugby):
 Un zombie s'approchant du joueur, se met a charger s'il est à portée d'attaque puis fonce dans une direction (ne peut mettre a jour sa direction durant l'attaque) avant de reprendre sa poursuite 
