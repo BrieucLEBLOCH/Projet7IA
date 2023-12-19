@@ -863,7 +863,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -888,7 +888,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.22, z: -6.63}
+  m_LocalPosition: {x: -0.03, y: 0.22, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1594,6 +1594,7 @@ MonoBehaviour:
   HPB: {fileID: 1980138298}
   XPB: {fileID: 441227656}
   canvas: {fileID: 1585603219}
+  bloodEffect: {fileID: 0}
 --- !u!58 &1068320324
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2332,63 +2333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170cfdcb51c923544873a70b868713f8, type: 3}
---- !u!1001 &1951570090
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 24.393463
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.6746755
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687794674507896558, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_Name
-      value: Kamikaze (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
 --- !u!1 &1960954501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,63 +2472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1980138297}
---- !u!1001 &1982228787
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.305197
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.6934235
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 682920259355425429, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687794674507896558, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
-      propertyPath: m_Name
-      value: Kamikaze
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 372656612695a6345a2057f6b5cb6a3b, type: 3}
 --- !u!4 &1986493173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 997939042657263134, guid: 170cfdcb51c923544873a70b868713f8, type: 3}
@@ -2977,5 +2864,3 @@ SceneRoots:
   - {fileID: 483186205}
   - {fileID: 458094350}
   - {fileID: 984793693}
-  - {fileID: 1982228787}
-  - {fileID: 1951570090}
