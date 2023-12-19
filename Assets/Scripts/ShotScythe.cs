@@ -34,11 +34,11 @@ public class ShotScythe : MonoBehaviour
         Vector3 spawnPosition = player.transform.position;
         if (player.GetFlipped())
         {
-            spawnPosition.x -= 1.0f;
+            spawnPosition.x -= 2.0f;
         }
         else
         {
-            spawnPosition.x += 1.0f; 
+            spawnPosition.x += 2.0f; 
         }  
 
         GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);

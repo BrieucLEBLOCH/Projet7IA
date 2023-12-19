@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2745161357214321619}
   - component: {fileID: 6218779987402639805}
   - component: {fileID: 6171083551975318463}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie rugby
   m_TagString: EnemyTag
   m_Icon: {fileID: 0}
