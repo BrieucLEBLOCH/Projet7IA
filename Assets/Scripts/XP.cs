@@ -28,7 +28,7 @@ public class XP : MonoBehaviour
             player = collision.gameObject.GetComponentInParent<Player>();
             isFollowing = true;
         }
-        if (collision.gameObject.tag == "PlayerTag")
+        if (collision.gameObject.tag == "Player")
         {
             player.AddXP();
             Destroy(gameObject);

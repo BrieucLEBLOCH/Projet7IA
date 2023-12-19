@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - XPTag
-  - PlayerTag
   - GrabTag
   - EnemyTag
-  - BloodEffect
+  - Kamikaze
+
   layers:
   - Default
   - TransparentFX

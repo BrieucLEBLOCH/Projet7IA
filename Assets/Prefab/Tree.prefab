@@ -189,3 +189,4 @@ MonoBehaviour:
   maxHP: 20
   dmg: 1
   XP: {fileID: 2486790568786027743, guid: 350d1ffe56018aa468bfe657e181e03c, type: 3}
+  Bonus: {fileID: 2486790568786027743, guid: 6e2db20da9bd4ec4ca162980f143d735, type: 3}

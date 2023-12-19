@@ -18,7 +18,7 @@ public class FireBall : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerTag")
+        if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
             collision.gameObject.GetComponentInParent<Player>().TakeDamage(dmg);
