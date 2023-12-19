@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateManager : MonoBehaviour
+public class ZombieKamikaze : MonoBehaviour
 {
-    [SerializeField] private State currentState;
+    private State currentState;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private RallyState rallyState;
     [SerializeField] private ExplosionState explosionState;
@@ -52,50 +52,12 @@ public class StateManager : MonoBehaviour
             currentState = explosionState;
         }
     }
-}
 
-/*
-
-public class StateManager : MonoBehaviour
-{
-    [SerializeField] private State currentState;
-    [SerializeField] private ChaseState chaseState;
-    [SerializeField] private ExplosionState explosionState;
-
-    private MoveMonster moveMonster;
-
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        moveMonster = GetComponent<MoveMonster>();
-
-        if (chaseState != null && explosionState != null)
+        if (collision.tag == "Player")
         {
-            chaseState.Initialize(moveMonster, explosionState);
-            explosionState.Initialize(moveMonster);
-        }
-
-        currentState = chaseState;
-    }
-
-    private void Update()
-    {
-        RunStateMachine();
-    }
-
-    private void RunStateMachine()
-    {
-        State nextState = currentState?.RunCurrentState();
-
-        if (nextState != null)
-        {
-            SwitchToTheNextState(nextState);
+            Debug.Log("bite");
         }
     }
-
-    private void SwitchToTheNextState(State nextState)
-    {
-        currentState = nextState;
-    }
 }
-
-*/

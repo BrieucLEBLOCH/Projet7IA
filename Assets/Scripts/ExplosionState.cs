@@ -5,6 +5,8 @@ using UnityEngine;
 public class ExplosionState : State
 {
     [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject explosionCollider;
+    bool explosion = true;
 
     private MoveMonster moveMonster;
 
@@ -15,16 +17,27 @@ public class ExplosionState : State
 
     public override State RunCurrentState()
     {
-        Explode();
-        Destroy(moveMonster.gameObject);
+
+        StartCoroutine(Explosion(0.5f));
         return null;
     }
 
-    private void Explode()
+    private IEnumerator Explosion(float waitTime)
     {
-        if (explosionEffect != null)
+        yield return new WaitForSeconds(waitTime);
+        if (explosionEffect != null && explosion)
         {
             Instantiate(explosionEffect, moveMonster.transform.position, Quaternion.identity);
+            explosion = false;
         }
+        StartCoroutine(ExplosionCollider(1.0f));
+    }
+
+    private IEnumerator ExplosionCollider(float waitTime)
+    {
+        explosionCollider.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        explosionCollider.SetActive(false);
+        Destroy(moveMonster.gameObject);
     }
 }

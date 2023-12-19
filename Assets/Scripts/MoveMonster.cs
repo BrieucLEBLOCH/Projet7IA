@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class MoveMonster : MonoBehaviour
 {
-    public Transform player;
-
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accelerationDistance;
 
     private Rigidbody2D rb2d;
+    public Transform player;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.Find("/Player").transform;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -99,7 +98,7 @@ public class MoveMonster : MonoBehaviour
 
     public void SwitchToExplosionState()
     {
-        StateManager stateManager = GetComponent<StateManager>();
+        ZombieKamikaze stateManager = GetComponent<ZombieKamikaze>();
 
         if (stateManager != null)
         {
@@ -130,38 +129,3 @@ public class MoveMonster : MonoBehaviour
         }
     }
 }
-
-/*
-
-public class MoveMonster : MonoBehaviour
-{
-    public Transform player;
-
-    [SerializeField] private float speed;
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float accelerationDistance;
-
-    private Rigidbody2D rb2d;
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    public void MoveTowardsThePlayer()
-    {
-        if (player != null && rb2d != null)
-        {
-            Vector2 direction = (player.position - transform.position).normalized;
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-            float speedFactor = Mathf.Clamp(1 - (distanceToPlayer / accelerationDistance), 0, 1);
-            float adjustedSpeed = Mathf.Lerp(speed, maxSpeed, speedFactor);
-
-            rb2d.MovePosition(rb2d.position + direction * adjustedSpeed * Time.fixedDeltaTime);
-        }
-    }
-}
-
-*/
