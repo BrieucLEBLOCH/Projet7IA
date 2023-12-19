@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] Canvas canvas;
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -116,4 +117,5 @@ public class Player : MonoBehaviour
     {
         return flipped;
     }
+
 }
