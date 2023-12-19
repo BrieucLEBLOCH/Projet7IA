@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : State
+public class ChaseState : KamikazeState
 {
     [SerializeField] private RallyState rallyState;
     [SerializeField] private ExplosionState explosionState;
 
     [SerializeField] private float explosionRange;
 
-    private MoveMonster moveMonster;
+    private MoveKamikaze moveMonster;
 
-    public void Initialize(MoveMonster mover, RallyState rally, ExplosionState explosion)
+    public void Initialize(MoveKamikaze mover, RallyState rally, ExplosionState explosion)
     {
         moveMonster = mover;
         rallyState = rally;
         explosionState = explosion;
     }
 
-    public override State RunCurrentState()
+    public override KamikazeState RunCurrentState()
     {
         moveMonster.MoveTowardsThePlayer();
 
@@ -30,7 +30,7 @@ public class ChaseState : State
             return explosionState;
         }
 
-        if (MoveMonster.CountAllMonsters() < 2)
+        if (MoveKamikaze.CountAllMonsters() < 2)
         {
             return this;
         }

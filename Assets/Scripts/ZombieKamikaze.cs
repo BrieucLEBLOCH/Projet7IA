@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ZombieKamikaze : MonoBehaviour
 {
-    private State currentState;
+    private KamikazeState currentState;
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private RallyState rallyState;
     [SerializeField] private ExplosionState explosionState;
 
-    private MoveMonster moveMonster;
+    private MoveKamikaze moveMonster;
 
     private void Start()
     {
-        moveMonster = GetComponent<MoveMonster>();
+        moveMonster = GetComponent<MoveKamikaze>();
 
         if (chaseState != null && rallyState != null && explosionState != null)
         {
@@ -32,7 +32,7 @@ public class ZombieKamikaze : MonoBehaviour
 
     private void RunStateMachine()
     {
-        State nextState = currentState?.RunCurrentState();
+        KamikazeState nextState = currentState?.RunCurrentState();
 
         if (nextState != null)
         {
@@ -40,7 +40,7 @@ public class ZombieKamikaze : MonoBehaviour
         }
     }
 
-    private void SwitchToTheNextState(State nextState)
+    private void SwitchToTheNextState(KamikazeState nextState)
     {
         currentState = nextState;
     }
@@ -57,7 +57,7 @@ public class ZombieKamikaze : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("bite");
+            collision.GetComponent<Player>().TakeDamage(4);
         }
     }
 }

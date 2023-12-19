@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 1405157537285739922}
   - component: {fileID: 5293119699567440050}
   - component: {fileID: 378073233706809130}
+  - component: {fileID: 3952407815698875493}
   m_Layer: 3
-  m_Name: Monster
+  m_Name: Kamikaze
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,9 +79,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2092964637, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5423229, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,8 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  maxSpeed: 20
-  accelerationDistance: 10
+  sprintSpeed: 15
   player: {fileID: 0}
 --- !u!114 &1405157537285739922
 MonoBehaviour:
@@ -193,6 +193,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &3952407815698875493
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687794674507896558}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adef629efea46744a82d941bfd555c19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3762170751403642633
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
   explosionCollider: {fileID: 6937281864573738765}
+  mobSprite: {fileID: 6439731824025009562}
 --- !u!1 &4837202117161751000
 GameObject:
   m_ObjectHideFlags: 0

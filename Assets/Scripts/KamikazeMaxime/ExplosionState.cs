@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionState : State
+public class ExplosionState : KamikazeState
 {
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject explosionCollider;
+    [SerializeField] private SpriteRenderer mobSprite;
     bool explosion = true;
 
-    private MoveMonster moveMonster;
+    private MoveKamikaze moveMonster;
 
-    public void Initialize(MoveMonster mover)
+    public void Initialize(MoveKamikaze mover)
     {
         moveMonster = mover;
     }
 
-    public override State RunCurrentState()
+    public override KamikazeState RunCurrentState()
     {
 
         StartCoroutine(Explosion(0.5f));
@@ -35,6 +36,7 @@ public class ExplosionState : State
 
     private IEnumerator ExplosionCollider(float waitTime)
     {
+        mobSprite.enabled = false;
         explosionCollider.SetActive(true);
         yield return new WaitForSeconds(waitTime);
         explosionCollider.SetActive(false);

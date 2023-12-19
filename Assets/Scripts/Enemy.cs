@@ -43,17 +43,9 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = color;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "PlayerTag")
-        {
-            collision.gameObject.GetComponentInParent<Player>().TakeDamage(dmg);
-        }
-    }
-
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PlayerTag")
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponentInParent<Player>().TakeDamage(dmg);
         }

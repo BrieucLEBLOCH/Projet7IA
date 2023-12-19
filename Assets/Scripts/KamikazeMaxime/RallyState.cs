@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RallyState : State
+public class RallyState : KamikazeState
 {
     [SerializeField] private ChaseState chaseState;
 
     [SerializeField] private float rallyRadius;
 
-    private MoveMonster moveMonster;
+    private MoveKamikaze moveMonster;
 
-    public void Initialize(MoveMonster mover, ChaseState chase)
+    public void Initialize(MoveKamikaze mover, ChaseState chase)
     {
         moveMonster = mover;
         chaseState = chase;
     }
 
-    public override State RunCurrentState()
+    public override KamikazeState RunCurrentState()
     {
-        if (MoveMonster.CountAllMonsters() < 2)
+        if (MoveKamikaze.CountAllMonsters() < 2)
         {
             return chaseState;
         }

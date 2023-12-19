@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - XPTag
-  - PlayerTag
   - GrabTag
   - EnemyTag
+  - Monster
   layers:
   - Default
   - TransparentFX
