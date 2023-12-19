@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveMonster : MonoBehaviour
+public class MoveMonsterBastien : MonoBehaviour
 {
     private Player player;
     [SerializeField] private float moveSpeedMonster = 5f;
