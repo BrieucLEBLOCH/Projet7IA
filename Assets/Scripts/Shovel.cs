@@ -20,7 +20,7 @@ public class Shovel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "EnemyTag")
+        if (collision.gameObject.tag == "EnemyTag" || collision.gameObject.tag == "Kamikaze")
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamages(dmg);
         }

@@ -52,7 +52,7 @@ public class MoveKamikaze : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.CompareTag("Monster"))
+            if (hitCollider.gameObject.CompareTag("Kamikaze"))
             {
                 monsterCount++;
             }
@@ -68,7 +68,7 @@ public class MoveKamikaze : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.CompareTag("Monster"))
+            if (hitCollider.gameObject.CompareTag("Kamikaze"))
             {
                 monsterCount++;
             }
@@ -83,7 +83,7 @@ public class MoveKamikaze : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.CompareTag("Monster") && hitCollider.gameObject != gameObject)
+            if (hitCollider.gameObject.CompareTag("Kamikaze") && hitCollider.gameObject != gameObject)
             {
                 MoveKamikaze otherMonster = hitCollider.GetComponent<MoveKamikaze>();
 
