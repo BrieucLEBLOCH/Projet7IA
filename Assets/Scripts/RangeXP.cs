@@ -30,7 +30,7 @@ public class RangeXP : MonoBehaviour
             player = collision.gameObject.GetComponentInParent<Player>();
             isFollowing = true;
         }
-        if (collision.gameObject.tag == "PlayerTag")
+        if (collision.gameObject.tag == "Player")
         {
             grab.GetComponent<CircleCollider2D>().radius = 2f;
             StartCoroutine(ChangeRadiusAfterDelay(5.0f));
