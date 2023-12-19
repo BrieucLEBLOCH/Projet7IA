@@ -4,11 +4,11 @@ using UnityEngine;
 
 //qui determine si on se rapproche ou attaque le joueur suivant la distance les séparant
 
-public class MoveState : State
+public class MoveStateZf : StateZf
 {
     //liste des states necessaires
-    public AttackState attackState;
-    public IdleState idlestate;
+    public AttackStateZf attackState;
+    public IdleStateZf idlestate;
 
     public bool isInAttackRange2;
 
@@ -34,7 +34,7 @@ public class MoveState : State
         rb2d = parentState.GetComponentInParent<Rigidbody2D>();
     }
 
-    public override State RunCurrentState()
+    public override StateZf RunCurrentState()
     {
         //si on est a portée d'attaque
         if (isInAttackRange())

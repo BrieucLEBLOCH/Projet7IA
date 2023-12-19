@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : State
+public class AttackStateZf : StateZf
 {
     //liste des states necessaire
-    public IdleState idlestate;
+    public IdleStateZf idlestate;
 
     //Parametre pour determiner si on peut attaquer de nouveau ou non
     private bool Had_Attacked = false;
@@ -15,7 +15,6 @@ public class AttackState : State
     //pour la fireball
     [SerializeField] private GameObject PrefabFireBall;
     private GameObject player;
-    private bool canShoot = true, atRange = false;
     [SerializeField] private float fireBallSpeed = 5;
     private float distance;
 
@@ -30,7 +29,7 @@ public class AttackState : State
         rb2d = parentState.GetComponentInParent<Rigidbody2D>();
     }
 
-    public override State RunCurrentState()
+    public override StateZf RunCurrentState()
     {
         //s'il n'a pas encore attaqué 
         if (Had_Attacked == false)// && timeRemaining <= 0)

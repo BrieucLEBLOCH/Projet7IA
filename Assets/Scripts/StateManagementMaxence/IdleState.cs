@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : State
+public class IdleStateZf : StateZf
 {
     //liste des differents states
-    public MoveState moveState;
-    public AttackState attackState;
-    public Running_state runningState;
+    public MoveStateZf moveState;
+    public AttackStateZf attackState;
+    public Running_stateZf runningState;
 
     //Player
     private GameObject player;
@@ -30,12 +30,12 @@ public class IdleState : State
         rb2d = parentState.GetComponentInParent<Rigidbody2D>();
     }
 
-    public override State RunCurrentState()
+    public override StateZf RunCurrentState()
     {
         int i;
 
         i = choice_to_make(); //suivant la distance séparant le zombie du joueur on selectionne le state correspondant
-        Debug.Log("test i = " + i);
+        //Debug.Log("test i = " + i);
         if (i == 1)//on fuit
         {
             return runningState;

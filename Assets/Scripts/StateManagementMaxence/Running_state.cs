@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //state qui determine si le zombie fuie le joueur ou non
-public class Running_state : State
+public class Running_stateZf : StateZf
 {
     //liste des states necessaire
-    public IdleState idlestate;
+    public IdleStateZf idlestate;
 
     //joueur
     private GameObject player;
@@ -29,7 +29,7 @@ public class Running_state : State
         rb2d = parentState.GetComponentInParent<Rigidbody2D>();
     }
 
-    public override State RunCurrentState()
+    public override StateZf RunCurrentState()
     {
         //si le joueur est proche du zombie il fuit
         if (noclose())
@@ -47,7 +47,7 @@ public class Running_state : State
     {
         if (player != null)
         {
-            Vector2 direction = (player.transform.position - transform.position).normalized;
+            //Vector2 direction = (player.transform.position - transform.position).normalized;
             Vector2 distance = player.transform.position - this.transform.position;
             if (distance.magnitude <= range_running)
                 return true;
