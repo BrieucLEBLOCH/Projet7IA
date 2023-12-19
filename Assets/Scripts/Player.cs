@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,7 +23,11 @@ public class Player : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    private SpriteRenderer spritePlayer;
+
     [SerializeField] Canvas canvas;
+
+    [SerializeField] private ParticleSystem bloodEffect;
 
     // Start is called before the first frame update
     void Awake()
@@ -31,6 +36,8 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         canvas.gameObject.SetActive(false);
+        spritePlayer = GetComponent<SpriteRenderer>();
+        bloodEffect = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -103,9 +110,32 @@ public class Player : MonoBehaviour
             HP -= i;
             canTakeDmg = false;
             StartCoroutine(IFrame(0.5f));
+            StartCoroutine(FeedBack(0.1f, 3.0f));
+            spritePlayer.color = new UnityEngine.Color(1f, 0f, 0f, 1f);
+            PlayBloodEffect();
         }
 
     }
+
+    private IEnumerator FeedBack(float time, float blinkCount)
+    {
+
+        for (int i = 0; i < blinkCount; i++)
+        {
+            yield return new WaitForSeconds(time);
+            spritePlayer.color = new UnityEngine.Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(time);
+            spritePlayer.color = new UnityEngine.Color(1f, 0f, 0f, 1f);
+        }
+
+        spritePlayer.color = new UnityEngine.Color(1f, 1f, 1f, 1f);
+    }
+
+    private void PlayBloodEffect()
+    {
+        bloodEffect.Play();
+    }
+
     private IEnumerator IFrame(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
