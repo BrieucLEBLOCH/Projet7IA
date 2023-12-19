@@ -23,8 +23,9 @@ public class InRange : ActionNode
     protected override State OnUpdate()
     {
         distance = Vector3.Distance(player.transform.position, context.transform.position);
-        if (distance <= range)
+        if (distance >= range)
         {
+            Debug.Log("in range");
             return State.Success;
         }
         return State.Failure;

@@ -11,6 +11,11 @@ public class SpawnMonsters : ActionNode
 
     int bossPhase;
     protected override void OnStart() {
+        
+        //bossState = context.gameObject.GetComponent<BossState>();
+        //bossState.phaseBossState = 1;
+        bossPhase = context.gameObject.GetComponent<BossState>().GetPhase();
+        //Debug.Log("cc"+ bossState.GetCooldown());
         foreach (Transform bossSpawner in context.transform.GetComponentsInChildren<Transform>())
         {
             if (bossSpawner.name == "SpawnersPhase1")
@@ -44,28 +49,21 @@ public class SpawnMonsters : ActionNode
     }
 
     protected override State OnUpdate() {
-        bossPhase = context.gameObject.GetComponent<BossState>().GetPhase();
         //string bossSpawnLevel = "spawnersPhase" + bossPhase;
-
+        //Debug.Log(bossPhase);
         switch (bossPhase)
         {
             case 1:
-                foreach (GameObject spawn in spawnersPhase1)
-                {
-
-                }
+                Debug.Log("phase 1");
+                spawnMonsters(spawnersPhase1);
                 break;
             case 2:
-                foreach (GameObject spawn in spawnersPhase1)
-                {
-
-                }
+                Debug.Log("phase 2");
+                spawnMonsters(spawnersPhase2);
                 break; 
             case 3:
-                foreach (GameObject spawn in spawnersPhase1)
-                {
-
-                }
+                Debug.Log("phase 3");
+                spawnMonsters(spawnersPhase3);
                 break;
         }
         
@@ -76,8 +74,11 @@ public class SpawnMonsters : ActionNode
     {
         foreach (GameObject spawn in spawners)
         {
-            
+            GameObject zombie = context.gameObject.GetComponent<BossState>().zombieNormal;
+            zombie.transform.position = spawn.transform.position;
+            Instantiate(zombie);
             //Instantiate(spawn);
         }
+        context.transform.GetComponent<SpawnCD>().InCooldown();
     }
 }
