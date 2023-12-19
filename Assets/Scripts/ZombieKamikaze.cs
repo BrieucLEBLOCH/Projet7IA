@@ -8,12 +8,15 @@ public class ZombieKamikaze : MonoBehaviour
     [SerializeField] private ChaseState chaseState;
     [SerializeField] private RallyState rallyState;
     [SerializeField] private ExplosionState explosionState;
+    [SerializeField] private int explosionDmg = 4;
+    private Enemy enemy;
 
     private MoveKamikaze moveMonster;
 
     private void Start()
     {
         moveMonster = GetComponent<MoveKamikaze>();
+        enemy = gameObject.GetComponent<Enemy>();
 
         if (chaseState != null && rallyState != null && explosionState != null)
         {
@@ -57,7 +60,7 @@ public class ZombieKamikaze : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<Player>().TakeDamage(4);
+            collision.GetComponent<Player>().TakeDamage(explosionDmg);
         }
     }
 }

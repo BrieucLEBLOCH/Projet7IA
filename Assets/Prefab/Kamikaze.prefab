@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682920259355425429}
   - component: {fileID: 6439731824025009562}
+  - component: {fileID: 323564567000573233}
   - component: {fileID: 754588393466627466}
   - component: {fileID: 1405157537285739922}
   - component: {fileID: 5293119699567440050}
@@ -91,6 +92,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &323564567000573233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687794674507896558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972532c0d95dd46478f748d8d045e105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 4
+  dmg: 1
+  XP: {fileID: 2486790568786027743, guid: 350d1ffe56018aa468bfe657e181e03c, type: 3}
+  Bonus: {fileID: 2486790568786027743, guid: 6e2db20da9bd4ec4ca162980f143d735, type: 3}
 --- !u!114 &754588393466627466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +138,7 @@ MonoBehaviour:
   chaseState: {fileID: 4224232428857754841}
   rallyState: {fileID: 5104345124938204843}
   explosionState: {fileID: 2112487400835065893}
+  explosionDmg: 4
 --- !u!50 &5293119699567440050
 Rigidbody2D:
   serializedVersion: 4
