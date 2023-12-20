@@ -6,10 +6,11 @@ public class Shovel : MonoBehaviour
 {
     [SerializeField]
     private int dmg = 2;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.Find("/Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class Shovel : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyTag" || collision.gameObject.tag == "Kamikaze")
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamages(dmg);
+            collision.gameObject.GetComponent<Enemy>().TakeDamages(dmg + player.GetDmgBonus());
         }
     }
 }

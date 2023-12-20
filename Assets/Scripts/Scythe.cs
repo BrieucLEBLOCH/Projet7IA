@@ -15,6 +15,7 @@ public class Scythe : MonoBehaviour
     {
         player = GameObject.Find("/Player").GetComponent<Player>();
         direction = player.GetFlipped() ? -player.transform.right : player.transform.right;
+        transform.Rotate(new Vector3(0,0,Random.Range(1, 360)));
     }
     void Update()
     {
@@ -38,7 +39,7 @@ public class Scythe : MonoBehaviour
         }
         if(collision.gameObject.tag == "EnemyTag" || collision.gameObject.tag == "Kamikaze")
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamages(dmg);
+            collision.gameObject.GetComponent<Enemy>().TakeDamages(dmg + player.GetDmgBonus());
         }
     }
 

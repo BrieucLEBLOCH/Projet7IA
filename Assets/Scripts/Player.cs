@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     [SerializeField]
-    private float maxSpeed = 5, currentSpeed = 0, acceleration = 50, deacceleration = 100, maxHP = 10, HP = 10, level = 1, XP = 0;
+    private float maxSpeed = 5, currentSpeed = 0, acceleration = 50, deacceleration = 100, level = 1, XP = 0;
+    [SerializeField]
+    private float  speedMult = 1, weaponSpeed = 1;
+    [SerializeField]
+    private int maxHP = 10, HP = 10, dmgBonus = 0, weaponNumber = 1, weaponProjectiles = 1;
     private bool flipped = false, canTakeDmg = true;
     private float XPtolvlup = 10;
     [SerializeField]
@@ -35,7 +39,6 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        canvas.gameObject.SetActive(false);
         spritePlayer = GetComponent<SpriteRenderer>();
         bloodEffect = GetComponentInChildren<ParticleSystem>();
     }
@@ -43,12 +46,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HP <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
         XPtolvlup = 10 * level;
         if (XP >= XPtolvlup)
         {
             XP -= XPtolvlup;
             level += 1;
-            canvas.gameObject.SetActive(true);
+            canvas.enabled = true;
             Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -58,11 +66,6 @@ public class Player : MonoBehaviour
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
         movementInput = movement.action.ReadValue<Vector2>();
-
-        if (HP <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
     }
 
     private void FixedUpdate()
@@ -77,7 +80,7 @@ public class Player : MonoBehaviour
             currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        rb2d.velocity = oldMovementInput * currentSpeed;
+        rb2d.velocity = oldMovementInput * currentSpeed * speedMult;
 
         Flip(rb2d.velocity.x);
 
@@ -112,7 +115,7 @@ public class Player : MonoBehaviour
             StartCoroutine(IFrame(0.5f));
             StartCoroutine(FeedBack(0.1f, 3.0f));
             spritePlayer.color = new UnityEngine.Color(1f, 0f, 0f, 1f);
-            PlayBloodEffect();
+            bloodEffect.Play();
         }
 
     }
@@ -131,11 +134,6 @@ public class Player : MonoBehaviour
         spritePlayer.color = new UnityEngine.Color(1f, 1f, 1f, 1f);
     }
 
-    private void PlayBloodEffect()
-    {
-        bloodEffect.Play();
-    }
-
     private IEnumerator IFrame(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -145,6 +143,57 @@ public class Player : MonoBehaviour
     public bool GetFlipped()
     {
         return flipped;
+    }
+
+    public void HPLevelUp()
+    {
+        maxHP += 5;
+        HP += 5;
+    }
+
+    public void SpeedLevelUp()
+    {
+        speedMult += 0.2f;
+    }
+
+    public void SetWeaponProjectiles(int i)
+    {
+        weaponProjectiles = i;
+    }
+
+    public int GetWeaponProjectiles()
+    {
+        return weaponProjectiles;
+    }
+
+    public void SetDmgBonus(int i)
+    {
+        dmgBonus = i;
+    }
+
+    public int GetDmgBonus()
+    {
+        return dmgBonus;
+    }
+
+    public void SetWeaponSpeed(float f)
+    {
+        weaponSpeed = f;
+    }
+
+    public float GetWeaponSpeed()
+    {
+        return weaponSpeed;
+    }
+
+    public void SetWeaponNumber(int i)
+    {
+        weaponNumber = i;
+    }
+
+    public int GetWeaponNumber()
+    {
+        return weaponNumber;
     }
 
 }
