@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public bool canSpawn = true;
+
     private Transform zombiesTransform;
     private Transform treesTransform;
     [SerializeField] private GameObject enemiesParent;
@@ -44,6 +46,8 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canSpawn) return;
+
         if (zombie1Spawn)
         {
             StartCoroutine(SpawnZombie1(zombie1CD));
