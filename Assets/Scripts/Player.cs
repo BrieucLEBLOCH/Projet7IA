@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField] Canvas canvas;
+    [SerializeField] Text textHP;
+    [SerializeField] Text textLevel;
 
     // Start is called before the first frame update
     void Awake()
@@ -52,6 +55,9 @@ public class Player : MonoBehaviour
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
         movementInput = movement.action.ReadValue<Vector2>();
+
+        textHP.text = "HP : "+ HP +" / "+ maxHP;
+        textLevel.text = "Level : " + level;
     }
 
     private void FixedUpdate()
