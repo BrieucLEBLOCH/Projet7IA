@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxHP = 10;
     [SerializeField] private int dmg = 1;
     [SerializeField] private GameObject XP;
-    [SerializeField] private GameObject Bonus;
+    [SerializeField] private GameObject rangePrefab;
+    [SerializeField] private GameObject healPrefab;
     private float HP = 1;
     private IEnumerator coroutine;
     Color color;
@@ -28,10 +29,18 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             Instantiate(XP, gameObject.transform.position, gameObject.transform.rotation);
-            if (Random.Range(1, 11) == 1)
+            if (Random.Range(1, 15) == 1)
             {
-                Instantiate(Bonus, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(rangePrefab, gameObject.transform.position, gameObject.transform.rotation);
             }
+
+            if (Random.Range(1, 15) == 1)
+            {
+                Debug.Log("Heal");
+                Instantiate(healPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                
+            }
+
 
             Destroy(gameObject);
         }

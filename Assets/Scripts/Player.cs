@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     [SerializeField]
-    private float maxSpeed = 5, currentSpeed = 0, acceleration = 50, deacceleration = 100, maxHP = 10, HP = 10, level = 1, XP = 0;
+    private float maxSpeed = 5, currentSpeed = 0, acceleration = 50, deacceleration = 100,  level = 1, XP = 0;
+    public float HP = 10;
+    public float maxHP = 10;
     private bool flipped = false, canTakeDmg = true;
     private float XPtolvlup = 10;
     [SerializeField]
