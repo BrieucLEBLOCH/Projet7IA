@@ -106,4 +106,11 @@ public class Spawner : MonoBehaviour
         tree1Spawn = true;
         tree1CD = Random.Range(12.0f, 17.0f);
     }
+
+    public void StopAllSpawningCoroutines()
+    {
+        StopCoroutine(SpawnZombie1(zombie1CD));
+        StopCoroutine(SpawnZombie2(zombie2CD));
+        StopCoroutine(SpawnTree1(tree1CD));
+    }
 }

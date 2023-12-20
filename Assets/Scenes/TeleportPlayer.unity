@@ -16231,13 +16231,13 @@ MonoBehaviour:
   acceleration: 10
   deacceleration: 10
   maxHP: 10
-  HP: 1000
+  HP: 10
   level: 1
   XP: 0
   movement: {fileID: 753646913899126624, guid: 9641a42ccf97d5d4eabae40576975d8f, type: 3}
   HPB: {fileID: 1980138298}
   XPB: {fileID: 441227656}
-  teleportPosition: {x: -76, y: -4}
+  teleportPosition: {x: -80, y: -4}
   canvas: {fileID: 1585603219}
 --- !u!58 &1068320324
 CircleCollider2D:

@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Vector2 teleportPosition;
 
+    private bool alreadyTeleported = false;
+
     public Vector2 movementInput { get; set; }
     private Vector2 oldMovementInput;
 
@@ -61,12 +63,16 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
-        if (level == 2)
+        if (level >= 10)
         {
-            TeleportPlayer();
+            if (!alreadyTeleported)
+            {
+                TeleportPlayer();
+                alreadyTeleported = true;
+            }
+
             DestroyAllMonsters();
             DisableSpawners();
-            level++;
         }
     }
 
@@ -134,23 +140,8 @@ public class Player : MonoBehaviour
         transform.position = teleportPosition;
     }
 
-    private void DisableSpawners()
-    {
-        Spawner[] spawners = FindObjectsOfType<Spawner>();
-        
-        foreach (var spawner in spawners)
-        {
-            spawner.canSpawn = false;
-        }
-    }
-
     private void DestroyAllMonsters()
     {
-        foreach (var monster in FindObjectsOfType<MoveKamikaze>())
-        {
-            Destroy(monster.gameObject);
-        }
-
         foreach (var enemy in FindObjectsOfType<Enemy>())
         {
             Destroy(enemy.gameObject);
@@ -159,6 +150,22 @@ public class Player : MonoBehaviour
         foreach (var treeMonster in FindObjectsOfType<TreeMonster>())
         {
             Destroy(treeMonster.gameObject);
+        }
+
+        foreach (var monster in FindObjectsOfType<MoveKamikaze>())
+        {
+            Destroy(monster.gameObject);
+        }
+    }
+
+    private void DisableSpawners()
+    {
+        Spawner[] spawners = FindObjectsOfType<Spawner>();
+
+        foreach (var spawner in spawners)
+        {
+            spawner.canSpawn = false;
+            spawner.StopAllSpawningCoroutines();
         }
     }
 }
