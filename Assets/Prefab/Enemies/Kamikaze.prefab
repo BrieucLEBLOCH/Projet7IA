@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1405157537285739922}
   - component: {fileID: 5293119699567440050}
   - component: {fileID: 378073233706809130}
+  - component: {fileID: 179113606540644308}
   m_Layer: 3
   m_Name: Kamikaze
   m_TagString: Kamikaze
@@ -193,6 +194,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &179113606540644308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687794674507896558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972532c0d95dd46478f748d8d045e105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 10
+  dmg: 1
+  XP: {fileID: 2486790568786027743, guid: 350d1ffe56018aa468bfe657e181e03c, type: 3}
+  Bonus: {fileID: 2486790568786027743, guid: 6e2db20da9bd4ec4ca162980f143d735, type: 3}
 --- !u!1 &3762170751403642633
 GameObject:
   m_ObjectHideFlags: 0
