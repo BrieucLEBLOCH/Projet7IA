@@ -1177,7 +1177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &764430649
 Transform:
   m_ObjectHideFlags: 0
@@ -5360,7 +5360,7 @@ MonoBehaviour:
   speedMult: 1
   weaponSpeed: 1
   maxHP: 10
-  HP: 9999
+  HP: 5
   dmgBonus: 0
   weaponNumber: 1
   weaponProjectiles: 1

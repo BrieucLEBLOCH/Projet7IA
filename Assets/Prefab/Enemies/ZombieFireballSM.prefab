@@ -118,7 +118,8 @@ MonoBehaviour:
   maxHP: 10
   dmg: 1
   XP: {fileID: 2486790568786027743, guid: 350d1ffe56018aa468bfe657e181e03c, type: 3}
-  Bonus: {fileID: 2486790568786027743, guid: 6e2db20da9bd4ec4ca162980f143d735, type: 3}
+  rangePrefab: {fileID: 2486790568786027743, guid: 6e2db20da9bd4ec4ca162980f143d735, type: 3}
+  healPrefab: {fileID: 3307787815971782174, guid: 3877da8808e8284458393fa6def99125, type: 3}
 --- !u!50 &6850286225886699221
 Rigidbody2D:
   serializedVersion: 4

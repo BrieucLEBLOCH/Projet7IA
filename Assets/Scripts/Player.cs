@@ -56,6 +56,8 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
+        movementInput = movement.action.ReadValue<Vector2>();
+
         XPtolvlup = 10 * level;
         if (XP >= XPtolvlup)
         {
@@ -70,12 +72,6 @@ public class Player : MonoBehaviour
         }
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
-        movementInput = movement.action.ReadValue<Vector2>();
-
-        if (HP <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
 
         if (level >= 5)
         {
@@ -216,6 +212,21 @@ public class Player : MonoBehaviour
     public int GetWeaponNumber()
     {
         return weaponNumber;
+    }
+
+    public void SetHP(int i)
+    {
+        HP = i;
+    }
+
+    public int GetHP()
+    {
+        return HP;
+    }
+
+    public int GetMaxHp()
+    {
+        return maxHP;
     }
     private void TeleportPlayer()
     {
