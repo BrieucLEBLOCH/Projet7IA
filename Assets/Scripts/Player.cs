@@ -5,6 +5,7 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -34,7 +35,10 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer spritePlayer;
 
-    [SerializeField] Canvas canvas;
+    [SerializeField] Canvas lvlUP;
+
+    [SerializeField] Text textHP;
+    [SerializeField] Text textLevel;
 
     [SerializeField] private ParticleSystem bloodEffect;
 
@@ -58,18 +62,22 @@ public class Player : MonoBehaviour
 
         movementInput = movement.action.ReadValue<Vector2>();
 
+        textHP.text = HP.ToString() + " / " + maxHP.ToString();
+        textLevel.text = level.ToString();
+
         XPtolvlup = 10 * level;
         if (XP >= XPtolvlup)
         {
             XP -= XPtolvlup;
             level += 1;
-            canvas.enabled = true;
+            lvlUP.enabled = true;
             Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             XP += 1;
         }
+
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
 
