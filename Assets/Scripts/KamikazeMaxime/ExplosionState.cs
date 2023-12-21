@@ -19,7 +19,7 @@ public class ExplosionState : KamikazeState
     public override KamikazeState RunCurrentState()
     {
 
-        StartCoroutine(Explosion(0.5f));
+        StartCoroutine(Explosion(0.8f));
         return null;
     }
 
@@ -31,7 +31,7 @@ public class ExplosionState : KamikazeState
             Instantiate(explosionEffect, moveMonster.transform.position, Quaternion.identity);
             explosion = false;
         }
-        StartCoroutine(ExplosionCollider(1.0f));
+        StartCoroutine(ExplosionCollider(0.2f));
     }
 
     private IEnumerator ExplosionCollider(float waitTime)

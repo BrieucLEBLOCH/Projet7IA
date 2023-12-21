@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5293119699567440050}
   - component: {fileID: 378073233706809130}
   - component: {fileID: 179113606540644308}
+  - component: {fileID: 5324262438130980691}
   m_Layer: 3
   m_Name: Kamikaze
   m_TagString: Kamikaze
@@ -210,6 +211,27 @@ MonoBehaviour:
   dmg: 1
   XP: {fileID: 2486790568786027743, guid: 350d1ffe56018aa468bfe657e181e03c, type: 3}
   Bonus: {fileID: 2486790568786027743, guid: 6e2db20da9bd4ec4ca162980f143d735, type: 3}
+--- !u!95 &5324262438130980691
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687794674507896558}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adef629efea46744a82d941bfd555c19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3762170751403642633
 GameObject:
   m_ObjectHideFlags: 0

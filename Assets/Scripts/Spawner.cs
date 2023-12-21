@@ -7,26 +7,39 @@ public class Spawner : MonoBehaviour
 {
     private Transform zombiesTransform;
     private Transform treesTransform;
+    private Transform kamikazeTransform;
+    private Transform zombieFBTransform;
+    private Transform zombieRTransform;
     [SerializeField] private GameObject enemiesParent;
 
-    [SerializeField] private GameObject zombieSpawner1;
-    private float zombie1CD;
-    private bool zombie1Spawn = true;
+    [SerializeField] private GameObject zombieSpawner;
+    private float zombieCD;
+    private bool zombieSpawn = true;
 
-    [SerializeField] private GameObject zombieSpawner2;
-    private float zombie2CD;
-    private bool zombie2Spawn = true;
+    [SerializeField] private GameObject zombieFBSpawner;
+    private float zombieFBCD;
+    private bool zombieFBSpawn = true;
 
-    [SerializeField] private GameObject treeSpawner1;
-    private float tree1CD;
-    private bool tree1Spawn = true;
+    [SerializeField] private GameObject zombieRSpawner;
+    private float zombieRCD;
+    private bool zombieRSpawn = true;
+
+    [SerializeField] private GameObject kamikazeSpawner;
+    private float kamikazeCD;
+    private bool kamikazeSpawn = true;
+
+    [SerializeField] private GameObject treeSpawner;
+    private float treeCD;
+    private bool treeSpawn = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        zombie1CD = Random.Range(1.0f, 5.0f);
-        zombie2CD = Random.Range(1.0f, 3.0f);
-        tree1CD = Random.Range(3.0f, 5.0f);
+        zombieCD = 1.0f;
+        kamikazeCD = 10.0f;
+        treeCD = 3.0f;
+        zombieFBCD = 3.0f;
+        zombieRCD = 8.0f;
 
         foreach (Transform t in enemiesParent.GetComponentsInChildren<Transform>())
         {
@@ -34,72 +47,130 @@ public class Spawner : MonoBehaviour
             {
                 zombiesTransform = t;
             }
+            if (t.name == "ZombiesR")
+            {
+                zombieRTransform = t;
+            }
+            if (t.name == "ZombiesFB")
+            {
+                zombieFBTransform = t;
+            }
             if (t.name == "Trees")
             {
                 treesTransform = t;
             }
+            if (t.name == "Kamikazes")
+            {
+                kamikazeTransform = t;
+            }
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (zombie1Spawn)
+        if (zombieSpawn)
         {
-            StartCoroutine(SpawnZombie1(zombie1CD));
-            zombie1Spawn = false;
+            StartCoroutine(SpawnZombie(zombieCD));
+            zombieSpawn = false;
         }
-        if (zombie2Spawn)
+        if (zombieFBSpawn)
         {
-            StartCoroutine(SpawnZombie2(zombie2CD));
-            zombie2Spawn = false;
+            StartCoroutine(SpawnZombieFB(zombieFBCD));
+            zombieFBSpawn = false;
         }
-        if (tree1Spawn)
+        if (zombieRSpawn)
         {
-            StartCoroutine(SpawnTree1(tree1CD));
-            tree1Spawn = false;
+            StartCoroutine(SpawnZombieR(zombieRCD));
+            zombieRSpawn = false;
+        }
+        if (kamikazeSpawn)
+        {
+            StartCoroutine(SpawnKamikaze(kamikazeCD));
+            kamikazeSpawn = false;
+        }
+        if (treeSpawn)
+        {
+            StartCoroutine(SpawnTree(treeCD));
+            treeSpawn = false;
         }
     }
 
-    private IEnumerator SpawnZombie1(float waitTime)
+    private IEnumerator SpawnZombie(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject enemies = Instantiate(zombieSpawner1, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject enemies = Instantiate(zombieSpawner, gameObject.transform.position, gameObject.transform.rotation);
         enemies.transform.SetParent(zombiesTransform);
         foreach (Transform enemy in enemies.GetComponentsInChildren<Transform>())
         {
             enemy.SetParent(zombiesTransform);
         }
         Destroy(enemies);
-        zombie1Spawn = true;
-        zombie1CD = Random.Range(10.0f, 15.0f);
+        zombieSpawn = true;
+        zombieCD = Random.Range(10.0f, 15.0f);
     }
 
-    private IEnumerator SpawnZombie2(float waitTime)
+    private IEnumerator SpawnZombieFB(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject enemies = Instantiate(zombieSpawner2, gameObject.transform.position, gameObject.transform.rotation);
-        enemies.transform.SetParent(zombiesTransform);
+        GameObject enemies = Instantiate(zombieFBSpawner, gameObject.transform.position, gameObject.transform.rotation);
+        enemies.transform.SetParent(zombieFBTransform);
         foreach (Transform enemy in enemies.GetComponentsInChildren<Transform>())
         {
-            enemy.SetParent(zombiesTransform);
+            if (enemy.parent == enemies.transform)
+            {
+                enemy.SetParent(zombieFBTransform);
+            }
         }
         Destroy(enemies);
-        zombie2Spawn = true;
-        zombie2CD = Random.Range(5.0f, 10.0f);
+        zombieFBSpawn = true;
+        zombieFBCD = Random.Range(20.0f, 30.0f);
     }
 
-    private IEnumerator SpawnTree1(float waitTime)
+    private IEnumerator SpawnZombieR(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject enemies = Instantiate(treeSpawner1, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject enemies = Instantiate(zombieRSpawner, gameObject.transform.position, gameObject.transform.rotation);
+        enemies.transform.SetParent(zombieRTransform);
+        foreach (Transform enemy in enemies.GetComponentsInChildren<Transform>())
+        {
+            if (enemy.parent == enemies.transform)
+            {
+                enemy.SetParent(zombieRTransform);
+            }
+        }
+        Destroy(enemies);
+        zombieRSpawn = true;
+        zombieRCD = Random.Range(20.0f, 30.0f);
+    }
+
+    private IEnumerator SpawnKamikaze(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        GameObject enemies = Instantiate(kamikazeSpawner, gameObject.transform.position, gameObject.transform.rotation);
+        enemies.transform.SetParent(kamikazeTransform);
+        foreach (Transform enemy in enemies.GetComponentsInChildren<Transform>(false))
+        {
+            if (enemy.parent == enemies.transform)
+            {
+                enemy.SetParent(kamikazeTransform);
+            }
+        }
+        Destroy(enemies);
+        kamikazeSpawn = true;
+        kamikazeCD = Random.Range(25.0f, 40.0f);
+    }
+
+    private IEnumerator SpawnTree(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        GameObject enemies = Instantiate(treeSpawner, gameObject.transform.position, gameObject.transform.rotation);
         enemies.transform.SetParent(treesTransform);
         foreach (Transform enemy in enemies.GetComponentsInChildren<Transform>())
         {
             enemy.SetParent(treesTransform);
         }
         Destroy(enemies);
-        tree1Spawn = true;
-        tree1CD = Random.Range(12.0f, 17.0f);
+        treeSpawn = true;
+        treeCD = Random.Range(12.0f, 17.0f);
     }
 }
