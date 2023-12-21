@@ -42,6 +42,16 @@ public class WeaponManager : MonoBehaviour
                 }
             }
         }
+        else if (player.GetWeaponNumber() == 3)
+        {
+            foreach (Transform t in gameObject.GetComponentsInChildren<Transform>(true))
+            {
+                if (t.gameObject.name == "Shovels" || t.gameObject.name == "Scythes" || t.gameObject.name == "Shotguns")
+                {
+                    t.gameObject.SetActive(true);
+                }
+            }
+        }
 
         if (player.GetWeaponProjectiles() == 1)
         {

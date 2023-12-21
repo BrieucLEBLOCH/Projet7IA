@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
 
-        if (level >= 5)
+        if (level >= 7)
         {
             if (!alreadyTeleported)
             {

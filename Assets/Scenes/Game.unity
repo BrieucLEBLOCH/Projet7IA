@@ -842,12 +842,12 @@ GameObject:
   m_Component:
   - component: {fileID: 522677621}
   m_Layer: 0
-  m_Name: 1
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &522677621
 Transform:
   m_ObjectHideFlags: 0
@@ -5361,8 +5361,8 @@ MonoBehaviour:
   XP: 0
   speedMult: 1
   weaponSpeed: 1
-  maxHP: 20
-  HP: 20
+  maxHP: 10
+  HP: 10
   dmgBonus: 0
   weaponNumber: 1
   weaponProjectiles: 1
@@ -5370,10 +5370,10 @@ MonoBehaviour:
   HPB: {fileID: 1980138298}
   XPB: {fileID: 441227656}
   teleportPosition: {fileID: 530246553}
-  lvlUP: {fileID: 0}
+  lvlUP: {fileID: 8944277901344854580}
   textHP: {fileID: 5800277460063447945}
   textLevel: {fileID: 2943174696970095890}
-  bloodEffect: {fileID: 1068320327}
+  bloodEffect: {fileID: 0}
 --- !u!58 &1068320324
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10893,7 +10893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13687df858bae44ebdfe899454bb5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 2
+  rotSpeed: 1
 --- !u!1 &1609889890
 GameObject:
   m_ObjectHideFlags: 0
@@ -11417,7 +11417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005429985}
   m_Layer: 0
-  m_Name: ShotGuns
+  m_Name: Shotguns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11601,7 +11601,7 @@ GameObject:
   - component: {fileID: 2120474274}
   - component: {fileID: 2120474275}
   m_Layer: 0
-  m_Name: Weapon 5
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11616,7 +11616,7 @@ Transform:
   m_GameObject: {fileID: 2120474272}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.335, z: -0.100000024}
+  m_LocalPosition: {x: 0, y: -0.335, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12404,6 +12404,11 @@ RectTransform:
 --- !u!1 &8944277901344854577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2898413491838205095, guid: 72f5e2e41521e3047bddb463f5b264e1, type: 3}
+  m_PrefabInstance: {fileID: 3501294587612228165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &8944277901344854580 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 228585907004301165, guid: 72f5e2e41521e3047bddb463f5b264e1, type: 3}
   m_PrefabInstance: {fileID: 3501294587612228165}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &9089599314062527393

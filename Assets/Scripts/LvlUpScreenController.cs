@@ -67,7 +67,7 @@ public class LvlUpScreenController : MonoBehaviour
         player.SetWeaponNumber(player.GetWeaponNumber() + 1);
         gameObject.GetComponent<Canvas>().enabled = false;
         Time.timeScale = 1;
-        if (player.GetWeaponNumber() >= 2)
+        if (player.GetWeaponNumber() >= 3)
         {
             Destroy(NewWeaponBtn);
         }
