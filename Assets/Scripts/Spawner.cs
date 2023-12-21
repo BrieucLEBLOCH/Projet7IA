@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    private bool canSpawn = true;
+
     private Transform zombiesTransform;
     private Transform treesTransform;
     private Transform kamikazeTransform;
@@ -68,6 +70,8 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (!canSpawn) return;
+
         if (zombieSpawn)
         {
             StartCoroutine(SpawnZombie(zombieCD));
@@ -172,5 +176,11 @@ public class Spawner : MonoBehaviour
         Destroy(enemies);
         treeSpawn = true;
         treeCD = Random.Range(12.0f, 17.0f);
+    }
+
+    public void StopSpawn()
+    {
+        canSpawn = false;
+        StopAllCoroutines();
     }
 }

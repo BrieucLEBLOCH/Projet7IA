@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
     private InputActionReference movement;
     [SerializeField] HPBar HPB;
     [SerializeField] XPBar XPB;
+
+    [SerializeField] private GameObject teleportPosition;
+
+    private bool alreadyTeleported = false;
+
     public Vector2 movementInput { get; set; }
     private Vector2 oldMovementInput;
 
@@ -66,6 +71,23 @@ public class Player : MonoBehaviour
         XPB.XPBarUpdate(XP, XPtolvlup);
         HPB.HPBarUpdate(HP, maxHP);
         movementInput = movement.action.ReadValue<Vector2>();
+
+        if (HP <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
+        if (level >= 5)
+        {
+            if (!alreadyTeleported)
+            {
+                TeleportPlayer();
+                alreadyTeleported = true;
+            }
+
+            DestroyAllMonsters();
+            DisableSpawners();
+        }
     }
 
     private void FixedUpdate()
@@ -195,5 +217,23 @@ public class Player : MonoBehaviour
     {
         return weaponNumber;
     }
+    private void TeleportPlayer()
+    {
+        transform.position = teleportPosition.transform.position;
+    }
 
+    private void DestroyAllMonsters()
+    {
+        foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            Destroy(enemy.gameObject);
+        }
+    }
+
+    private void DisableSpawners()
+    {
+        Spawner spawner = FindObjectOfType<Spawner>();
+
+            spawner.StopSpawn();
+    }
 }
