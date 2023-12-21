@@ -5360,7 +5360,7 @@ MonoBehaviour:
   speedMult: 1
   weaponSpeed: 1
   maxHP: 10
-  HP: 5
+  HP: 999
   dmgBonus: 0
   weaponNumber: 1
   weaponProjectiles: 1
