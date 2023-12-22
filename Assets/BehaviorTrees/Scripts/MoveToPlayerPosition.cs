@@ -21,7 +21,6 @@ public class MoveToPlayerPosition : ActionNode
 
     protected override State OnUpdate() {
         float range = (player.transform.position - context.gameObject.transform.position).magnitude;
-        Debug.Log(range);
         if (player != null && range >= 6 )
         {
             Vector2 direction = (player.transform.position - context.gameObject.transform.position).normalized;

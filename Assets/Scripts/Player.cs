@@ -245,7 +245,8 @@ public class Player : MonoBehaviour
     {
         foreach (var enemy in FindObjectsOfType<Enemy>())
         {
-            Destroy(enemy.gameObject);
+            if(enemy.tag != "BossMob")
+                Destroy(enemy.gameObject);
         }
     }
 

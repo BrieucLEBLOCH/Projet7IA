@@ -7,9 +7,12 @@ public class BossState : MonoBehaviour
 {
     [SerializeField] private int phaseBossState;
     [SerializeField] private float range;
+    [SerializeField] public float HP;
     [SerializeField] public GameObject zombieKamikaze;
     [SerializeField] public GameObject zombieBDF;
     [SerializeField] public GameObject zombieNormal;
+
+    public List<GameObject> zombies = new List<GameObject>();
 
     private bool isCooldown;
     // Start is called before the first frame update

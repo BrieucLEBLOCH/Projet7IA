@@ -21,27 +21,6 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   moveSpeedMonster: 5
---- !u!114 &-5845054773764262040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fed67f5194d9a1a4c974a54bd709dba0, type: 3}
-  m_Name: MoveAwayFromPlayer
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 89628a61537994d4a895f1cb22df8dde
-  position: {x: 1147.251, y: 358.25497}
-  blackboard:
-    target: {fileID: 0}
-  description: 
-  drawGizmos: 0
-  moveSpeedMonster: 1
 --- !u!114 &-5012312928348223185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,35 +132,9 @@ MonoBehaviour:
   - {fileID: -2750251828206434912}
   - {fileID: 2649099049651868710}
   - {fileID: 767054953805850438}
-  - {fileID: 649188273925000522}
-  - {fileID: 2222422732218297387}
-  - {fileID: -5845054773764262040}
   - {fileID: 5713935911959581344}
   blackboard:
     target: {fileID: 6360102477230428551, guid: ccba7040e0dacdc44bc67dbcd4bcaba7, type: 3}
---- !u!114 &649188273925000522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
-  m_Name: Sequencer
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 93adedf7f2e246d4e8130a0eeb22c058
-  position: {x: 952.7408, y: 231.05981}
-  blackboard:
-    target: {fileID: 0}
-  description: 
-  drawGizmos: 0
-  children:
-  - {fileID: 2222422732218297387}
-  - {fileID: -5845054773764262040}
 --- !u!114 &767054953805850438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,26 +196,6 @@ MonoBehaviour:
     target: {fileID: 0}
   description: 
   drawGizmos: 0
---- !u!114 &2222422732218297387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eaae886e29c6b04f85816d9be80238d, type: 3}
-  m_Name: InRange
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: e3a10cd5ce375264caf53853adf873a9
-  position: {x: 744.84, y: 359.1675}
-  blackboard:
-    target: {fileID: 0}
-  description: 
-  drawGizmos: 0
 --- !u!114 &2649099049651868710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,4 +242,3 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 2649099049651868710}
-  - {fileID: 649188273925000522}

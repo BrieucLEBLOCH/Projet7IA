@@ -5,41 +5,20 @@ using TheKiwiCoder;
 
 public class SpawnMonsters : ActionNode
 {
-    List<GameObject> spawnersPhase1 = new List<GameObject>();
-    List<GameObject> spawnersPhase2 = new List<GameObject>();
-    List<GameObject> spawnersPhase3 = new List<GameObject>();
+    List<GameObject> spawners = new List<GameObject>();
 
-    int bossPhase;
     protected override void OnStart() {
         
         //bossState = context.gameObject.GetComponent<BossState>();
         //bossState.phaseBossState = 1;
-        bossPhase = context.gameObject.GetComponent<BossState>().GetPhase();
         //Debug.Log("cc"+ bossState.GetCooldown());
         foreach (Transform bossSpawner in context.transform.GetComponentsInChildren<Transform>())
         {
-            if (bossSpawner.name == "SpawnersPhase1")
+            if (bossSpawner.name == "Spawners")
             {
                 for (int i = 0; i < bossSpawner.childCount; i++)
                 {
-                    spawnersPhase1.Add(bossSpawner.GetChild(i).gameObject);
-                    spawnersPhase2.Add(bossSpawner.GetChild(i).gameObject);
-                    spawnersPhase3.Add(bossSpawner.GetChild(i).gameObject);
-                }
-            }
-            else if(bossSpawner.name == "SpawnersPhase2")
-            {
-                for (int i = 0; i < bossSpawner.childCount; i++)
-                {
-                    spawnersPhase2.Add(bossSpawner.GetChild(i).gameObject);
-                    spawnersPhase3.Add(bossSpawner.GetChild(i).gameObject);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < bossSpawner.childCount; i++)
-                {
-                    spawnersPhase3.Add(bossSpawner.GetChild(i).gameObject);
+                    spawners.Add(bossSpawner.GetChild(i).gameObject);
                 }
             }
         }
@@ -49,24 +28,7 @@ public class SpawnMonsters : ActionNode
     }
 
     protected override State OnUpdate() {
-        //string bossSpawnLevel = "spawnersPhase" + bossPhase;
-        //Debug.Log(bossPhase);
-        switch (bossPhase)
-        {
-            case 1:
-                Debug.Log("phase 1");
-                spawnMonsters(spawnersPhase1);
-                break;
-            case 2:
-                Debug.Log("phase 2");
-                spawnMonsters(spawnersPhase2);
-                break; 
-            case 3:
-                Debug.Log("phase 3");
-                spawnMonsters(spawnersPhase3);
-                break;
-        }
-        
+        spawnMonsters(spawners);
         return State.Success;
     }
 
@@ -76,7 +38,11 @@ public class SpawnMonsters : ActionNode
         {
             GameObject zombie = context.gameObject.GetComponent<BossState>().zombieNormal;
             zombie.transform.position = spawn.transform.position;
+            zombie.tag = "BossMob";
+            zombie.AddComponent<CircleCollider2D>();
             Instantiate(zombie);
+            context.gameObject.GetComponent<BossState>().zombies.Add(zombie);
+            Debug.Log(zombie.transform);
             //Instantiate(spawn);
         }
         context.transform.GetComponent<SpawnCD>().InCooldown();

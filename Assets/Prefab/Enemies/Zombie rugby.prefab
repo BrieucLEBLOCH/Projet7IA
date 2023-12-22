@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6171083551975318463}
   m_Layer: 3
   m_Name: Zombie rugby
-  m_TagString: EnemyTag
+  m_TagString: BossMob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2959376397339751957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 598.87744, y: 263.81555, z: -1.0741478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

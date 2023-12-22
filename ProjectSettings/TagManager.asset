@@ -8,6 +8,8 @@ TagManager:
   - GrabTag
   - EnemyTag
   - Kamikaze
+  - PlayerTag
+  - BossMob
   layers:
   - Default
   - TransparentFX
