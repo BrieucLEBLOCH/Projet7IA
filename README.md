@@ -1,7 +1,3 @@
-Je vais frapper Bastien
-Pas cool mec
-Pas très malin de faire ça !!
-
 ZombieFireball (voir dossier state Management Maxence):
 Un zombie qui tire une boule de feu a distance, s'approche ou fui le joueur suivant la distance qui les separe
 Cette ia est gérée sous un state Management divisé par plusieurs états :
